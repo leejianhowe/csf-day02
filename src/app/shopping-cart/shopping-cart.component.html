@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        <tr>
+            <td style="font-size: 2rem;">
+                My Shopping Cart
+            </td>
+        </tr>
+    </thead>
+    <tr *ngFor="let x of shoppingCart; let index = index">
+        <h3>{{inventory[index].name}}</h3>
+        <img src="assets/images/{{inventory[index].imagePath}}" alt="">
+        <p>Amount: {{x}}</p>
+
+        <button *ngIf="x" (click)="removeItem(index)">Remove</button>
+    </tr>
+</table>

@@ -1,0 +1,13 @@
+<table>
+    <thead>
+        <tr style="font-size: 2rem;">
+            <td>SG Car Market</td>
+        </tr>
+    </thead>
+    <tr *ngFor="let item of inventory; let index = index">
+        <h3>{{item.name}}</h3>
+        <img src="assets/images/{{item.imagePath}}" alt="">
+        <br>
+        <button (click)="onAdd(index)">Add to Cart</button>
+    </tr>
+</table>
