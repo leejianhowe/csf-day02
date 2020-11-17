@@ -1,9 +1,9 @@
 <h1 style="text-align:center">Select your favourite cars</h1>
 <mat-grid-list cols="2" rowHeight="1:2">
   <mat-grid-tile>
-    <app-inventory></app-inventory>
+    <app-inventory (addToCart)="transferToCart($event)"></app-inventory>
   </mat-grid-tile>
   <mat-grid-tile>
-    <app-shopping-cart></app-shopping-cart>
+    <app-shopping-cart (deleteCar)=deleteCar($event) [cart]="cartList"></app-shopping-cart>
   </mat-grid-tile>
 </mat-grid-list>

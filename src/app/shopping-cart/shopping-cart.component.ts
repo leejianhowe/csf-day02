@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CarInventory } from '../inventory.service';
 import { Car } from '../car.model';
 @Component({
@@ -8,6 +8,9 @@ import { Car } from '../car.model';
 })
 export class ShoppingCartComponent implements OnInit {
   shoppingCart: number[] = [0, 0, 0, 0];
+  @Input() cart: []
+  @Output() deleteCar = new EventEmitter<string>()
+  
 
   inventory: Car[] = this.carInvetory.giveList();
 
@@ -21,7 +24,11 @@ export class ShoppingCartComponent implements OnInit {
       // console.log(this.shoppingCart);
     });
   }
-  removeItem(index:number) {
-    this.shoppingCart[index]--;
+
+  // removeItem(index:number) {
+  //   this.shoppingCart[index]--;
+  // }
+  removeItem(name:string) {
+    this.deleteCar.emit(name);
   }
 }

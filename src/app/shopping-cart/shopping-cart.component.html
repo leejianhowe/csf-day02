@@ -1,3 +1,4 @@
+<p>{{cart}}</p>
 <table>
     <thead>
         <tr>
@@ -6,11 +7,12 @@
             </td>
         </tr>
     </thead>
-    <tr *ngFor="let x of shoppingCart; let index = index">
-        <h3>{{inventory[index].name}}</h3>
-        <img src="assets/images/{{inventory[index].imagePath}}" alt="">
-        <p>Amount: {{x}}</p>
+    <!-- <tr *ngFor="let x of shoppingCart; let index = index"> -->
+    <tr *ngFor="let x of cart; let index = index">
+        <h3>{{x.name}}</h3>
+        <img src="assets/images/{{x.name}}.jpg" alt="">
+        <p>Amount: {{x.amount}}</p>
 
-        <button *ngIf="x" (click)="removeItem(index)">Remove</button>
+        <button *ngIf="x" (click)="removeItem(x.name)">Remove</button>
     </tr>
 </table>

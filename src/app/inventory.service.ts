@@ -4,25 +4,25 @@ import { Car } from './car.model';
 export class CarInventory {
   @Output() addToCart = new EventEmitter<number>();
   list: Car[] = [
-    { name: 'LaFerrari', imagePath: 'ferrari.jpg', description: 'red car' },
+    { name: 'LaFerrari', imagePath: 'LaFerrari.jpg', description: 'red car' },
     {
-      name: 'Mercedes AMG GTR',
-      imagePath: 'mercedes.jpg',
+      name: 'Mercedes',
+      imagePath: 'Mercedes.jpg',
       description: 'sliver car',
     },
     {
-      name: 'Mclaren Senna',
-      imagePath: 'mclaren.jpg',
+      name: 'Mclaren',
+      imagePath: 'Mclaren.jpg',
       description: 'orange car',
     },
     {
-      name: 'Porsche GT3 RS',
-      imagePath: 'porsche.jpg',
+      name: 'Porsche',
+      imagePath: 'Porsche.jpg',
       description: 'yellow car',
     },
   ];
   giveList() {
     return this.list.slice();
   }
-  
+
 }

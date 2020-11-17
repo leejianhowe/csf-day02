@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Car } from '../car.model';
 import { CarInventory } from '../inventory.service';
 
@@ -9,14 +9,20 @@ import { CarInventory } from '../inventory.service';
 })
 export class InventoryComponent implements OnInit {
   inventory: Car[];
+  @Output() addToCart = new EventEmitter<string>();
+  
   constructor(private carInventory: CarInventory) {}
 
   ngOnInit(): void {
     this.inventory = this.carInventory.giveList();
     console.log(this.inventory);
   }
+  // onAdd(event) {
+  //   // console.log(event)
+  //   this.carInventory.addToCart.emit(event)
+  // }
   onAdd(event) {
-    // console.log(event)
-    this.carInventory.addToCart.emit(event)
+    console.log(event)
+    this.addToCart.emit(event)
   }
 }
