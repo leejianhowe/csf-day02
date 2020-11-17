@@ -15,14 +15,14 @@ export class InventoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.inventory = this.carInventory.giveList();
-    console.log(this.inventory);
+    // console.log(this.inventory);
   }
   // onAdd(event) {
   //   // console.log(event)
   //   this.carInventory.addToCart.emit(event)
   // }
   onAdd(event) {
-    console.log(event)
+    // console.log(event)
     this.addToCart.emit(event)
   }
 }

@@ -7,10 +7,8 @@ import { Car } from '../car.model';
   styleUrls: ['./shopping-cart.component.css'],
 })
 export class ShoppingCartComponent implements OnInit {
-  shoppingCart: number[] = [0, 0, 0, 0];
-  @Input() cart: []
-  @Output() deleteCar = new EventEmitter<string>()
-  
+  @Input() cart: {};
+  @Output() deleteCar = new EventEmitter<string>();
 
   inventory: Car[] = this.carInvetory.giveList();
 
@@ -18,17 +16,8 @@ export class ShoppingCartComponent implements OnInit {
 
   constructor(private carInvetory: CarInventory) {}
 
-  ngOnInit(): void {
-    this.carInvetory.addToCart.subscribe((index: number) => {
-      this.shoppingCart[index]++;
-      // console.log(this.shoppingCart);
-    });
-  }
-
-  // removeItem(index:number) {
-  //   this.shoppingCart[index]--;
-  // }
-  removeItem(name:string) {
+  ngOnInit(): void {}
+  removeItem(name: string) {
     this.deleteCar.emit(name);
   }
 }

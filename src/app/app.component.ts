@@ -6,42 +6,36 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'csf-day02';
   transfer: string;
-  cartList: { name: string; amount: number }[] = [];
+  cartList = new Map();
+  cart = [];
 
-  found: boolean = false;
   transferToCart(event: string) {
-    console.log('event', event);
-    console.log(this.cartList.length);
-
-    if (this.cartList.length) {
-      for (let i = 0; i < this.cartList.length; i++) {
-        if (this.cartList[i].name === event) {
-          this.cartList[i].amount++;
-          this.found = true;
-          break;
-        }
-      }
-      if (!this.found) {
-        console.log(this.found);
-        let obj = { name: event, amount: 1 };
-        this.cartList.push(obj);
-      }
+    if (this.cartList.has(event)) {
+      this.cartList.set(event, this.cartList.get(event) + 1);
     } else {
-      let obj = { name: event, amount: 1 };
-      this.cartList.push(obj);
+      this.cartList.set(event, 1);
     }
-    this.found = false;
+    // console.log('cart', this.cartList);
+    this.reloadCart()
 
-    console.log('cart', this.cartList);
   }
 
-  deleteCar(event) {
-    for (let i = 0; i < this.cartList.length; i++) {
-      if (event === this.cartList[i].name) {
-        this.cartList.splice(i, 1);
-      }
-    }
+  reloadCart() {
+    let tempCart = [];
+    this.cartList.forEach(function (value, key) {
+      let obj = {};
+      obj['name'] = key;
+      obj['amount'] = value;
+      console.log(obj);
+      tempCart.push(obj);
+    });
+    this.cart = tempCart;
+    
+  }
+
+  deleteCar(event: string) {
+    this.cartList.delete(event);
+    this.reloadCart()
   }
 }
